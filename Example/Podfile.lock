@@ -1,0 +1,20 @@
+PODS:
+  - ExpandableTextView (0.1.0)
+  - Nimble (3.2.0)
+  - Quick (0.9.1)
+
+DEPENDENCIES:
+  - ExpandableTextView (from `../`)
+  - Nimble (~> 3.0)
+  - Quick (~> 0.8)
+
+EXTERNAL SOURCES:
+  ExpandableTextView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ExpandableTextView: 8e673cf5c5b6ab8a2a58309306d34ccec04f5f2b
+  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
+  Quick: a5221fc21788b6aeda934805e68b061839bc3165
+
+COCOAPODS: 0.39.0

@@ -6,13 +6,25 @@
 //  Copyright (c) 2016 Alberto Moral. All rights reserved.
 //
 
-import UIKit
+import ExpandableTextView
 
-class ViewController: UIViewController {
+class ViewController: AwesomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        toolBar.textView.maxNumberOfLines = 3
+    }
+    
+    override func didPressRighButton() {
+        let alert = UIAlertController(title: "Awesome!", message:"\(toolBar.textView.text)", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "You're right", style: .Default) { _ in
+            print("Message: \(self.toolBar.textView.text)")
+        }
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true){}
+        
+        super.didPressRighButton()
     }
 
     override func didReceiveMemoryWarning() {

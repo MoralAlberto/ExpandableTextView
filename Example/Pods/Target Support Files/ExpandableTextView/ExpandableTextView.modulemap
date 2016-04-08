@@ -1,0 +1,6 @@
+framework module ExpandableTextView {
+  umbrella header "ExpandableTextView-umbrella.h"
+
+  export *
+  module * { export * }
+}
