@@ -13,7 +13,7 @@ class ViewController: AwesomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toolBar.textView.maxNumberOfLines = 3
+        toolBar.textView.maxNumberOfLines = 4
     }
     
     override func didPressRighButton() {

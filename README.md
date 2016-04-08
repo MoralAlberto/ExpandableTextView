@@ -7,6 +7,8 @@
 
 ExpandableTextView is a library written in Swift to adapt our UIToolbar depending on the content size of our UITextView. Stay tuned for new features!
 
+![demo](https://raw.githubusercontent.com/MoralAlberto/ExpandableTextView/master/DemoImages/demo.gif)
+
 ## Features
 
 - [x] Expand UITextView and UIToolbar
