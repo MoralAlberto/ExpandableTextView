@@ -1,6 +1,6 @@
 # ExpandableTextView
 
-[![CI Status](http://img.shields.io/travis/Alberto Moral/ExpandableTextView.svg?style=flat)](https://travis-ci.org/Alberto Moral/ExpandableTextView)
+[![CI Status](http://img.shields.io/travis/MoralAlberto/ExpandableTextView.svg?style=flat)](https://travis-ci.org/Alberto Moral/ExpandableTextView)
 [![Version](https://img.shields.io/cocoapods/v/ExpandableTextView.svg?style=flat)](http://cocoapods.org/pods/ExpandableTextView)
 [![License](https://img.shields.io/cocoapods/l/ExpandableTextView.svg?style=flat)](http://cocoapods.org/pods/ExpandableTextView)
 [![Platform](https://img.shields.io/cocoapods/p/ExpandableTextView.svg?style=flat)](http://cocoapods.org/pods/ExpandableTextView)
@@ -13,8 +13,8 @@ ExpandableTextView is a library written in Swift to adapt our UIToolbar dependin
 
 - [x] Expand UITextView and UIToolbar
 - [x] Add right button
-- [] Add a custom left button
-- [] Show all the images within our Camera Roll
+- [ ] Add a custom left button
+- [ ] Show all the images within our Camera Roll
 
 ## Usage
 
