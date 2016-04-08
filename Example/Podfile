@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'ExpandableTextView_Example', :exclusive => true do
+  pod 'ExpandableTextView', :path => '../'
+end
+
+target 'ExpandableTextView_Tests', :exclusive => true do
+  pod 'ExpandableTextView', :path => '../'
+
+  pod 'Quick', '~> 0.8'
+  pod 'Nimble', '~> 3.0'
+end
