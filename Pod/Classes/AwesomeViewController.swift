@@ -9,9 +9,9 @@
 import UIKit
 import Foundation
 
-class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
+public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
     
-    internal let toolBar = AwesomeToolbar()
+    public let toolBar = AwesomeToolbar()
     
     private var heightConstraint = NSLayoutConstraint()
     
@@ -23,7 +23,7 @@ class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
     //   |-> UITEXTVIEW
     //   |-> UIBUTTON
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         //  Extension to get notifications when the keyboard will/hide appear.
@@ -50,7 +50,7 @@ class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
 
 
     //  Hook
-    func didPressRighButton() {
+    public func didPressRighButton() {
         print("pressed")
     }
     
@@ -96,7 +96,7 @@ extension AwesomeViewController {
         }
     }
     
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         
     }
     

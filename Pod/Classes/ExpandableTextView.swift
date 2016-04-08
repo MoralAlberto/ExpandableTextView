@@ -12,11 +12,12 @@ protocol ExpandableTextViewDelegate {
     func notifyParentView(withHeigh: CGFloat)
 }
 
-class ExpandableTextView: UITextView {
+public class ExpandableTextView: UITextView {
     
     //  Public API
+    public var maxNumberOfLines = 4
+    
     var customDelegate: ExpandableTextViewDelegate?
-    var maxNumberOfLines = 4
     var minimumHeight: CGFloat = 30.0
     
     private var placeHolder = UILabel()
@@ -33,7 +34,7 @@ class ExpandableTextView: UITextView {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "didChangeTextViewText:", name: UITextViewTextDidChangeNotification, object: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -41,7 +42,7 @@ class ExpandableTextView: UITextView {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
     }
     
@@ -81,7 +82,7 @@ class ExpandableTextView: UITextView {
 
 
 extension ExpandableTextView: UITextViewDelegate {
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    public func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n") {
             self.resignFirstResponder()
             return false
@@ -89,7 +90,7 @@ extension ExpandableTextView: UITextViewDelegate {
         return true
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    public func textViewDidBeginEditing(textView: UITextView) {
         print("Text")
     }
 }

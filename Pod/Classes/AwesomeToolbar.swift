@@ -8,18 +8,16 @@
 
 import UIKit
 
-class AwesomeToolbar: UIToolbar {
+public class AwesomeToolbar: UIToolbar {
     
-    internal var rightButton = UIButton()
-    internal let textView = ExpandableTextView()
+    public var rightButton = UIButton()
+    public let textView = ExpandableTextView()
     
-    internal let container = UILayoutGuide()
-    internal var textViewTopConstraint = NSLayoutConstraint()
-    internal var textViewBottomConstraint = NSLayoutConstraint()
-    internal var toolBarHeighConstraint = NSLayoutConstraint()
-
+    public var textViewTopConstraint = NSLayoutConstraint()
+    public var textViewBottomConstraint = NSLayoutConstraint()
+    public var toolBarHeighConstraint = NSLayoutConstraint()
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
     }
     
@@ -62,7 +60,7 @@ class AwesomeToolbar: UIToolbar {
         NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30).active = true
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

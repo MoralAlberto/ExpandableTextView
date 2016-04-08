@@ -5,18 +5,30 @@
 [![License](https://img.shields.io/cocoapods/l/ExpandableTextView.svg?style=flat)](http://cocoapods.org/pods/ExpandableTextView)
 [![Platform](https://img.shields.io/cocoapods/p/ExpandableTextView.svg?style=flat)](http://cocoapods.org/pods/ExpandableTextView)
 
+ExpandableTextView is a library written in Swift to adapt our UIToolbar depending on the content size of our UITextView. Stay tuned for new features!
+
+## Features
+
+- [x] Expand UITextView and UIToolbar
+- [x] Add right button
+- [] Add a custom left button
+- [] Show all the images within our Camera Roll
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
+- iOS 9.0+
+- Xcode 7.2
+
 ## Installation
 
 ExpandableTextView is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
+```bash
 pod "ExpandableTextView"
 ```
 
