@@ -15,7 +15,7 @@ protocol ExpandableTextViewDelegate {
 public class ExpandableTextView: UITextView {
     
     //  Public API
-    public var maxNumberOfLines = 4
+    public var maxNumberOfLines = 0
     
     var customDelegate: ExpandableTextViewDelegate?
     var minimumHeight: CGFloat = 30.0

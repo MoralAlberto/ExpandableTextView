@@ -11,12 +11,9 @@ import Foundation
 
 public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
     
-    public let toolBar = AwesomeToolbar()
+    public let toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: true)
     
     private var heightConstraint = NSLayoutConstraint()
-    
-//    internal let container = UILayoutGuide()
-    
     
     //  Then we create a UITOOLBAR, UITEXTVIEW and UIBUTTON, we manage all this UIVIEW with NSLayoutAnchor (a factory class for creating NSLayoutConstraint objects using a fluent API), and also, in some cases we create constraints with NSLayoutConstraint.
     //  UITOOLBAR
@@ -35,7 +32,11 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
         view.addSubview(toolBar)
 
         //  Add Right Button Action
-        toolBar.rightButton.addTarget(self, action: "didPressRighButton", forControlEvents: .TouchUpInside)
+        toolBar.rightButton.addTarget(self, action: "didPressRightButton", forControlEvents: .TouchUpInside)
+        
+        if toolBar.hasLeftButton {
+            toolBar.leftButton.addTarget(self, action: "didPressLeftButton", forControlEvents: .TouchUpInside)
+        }
         
         //  Move the container at different heigh of your view. Put 300 instead of 0
         heightConstraint = toolBar.bottomAnchor.constraintGreaterThanOrEqualToAnchor(view.bottomAnchor, constant: 0)
@@ -50,8 +51,12 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
 
 
     //  Hook
-    public func didPressRighButton() {
-        print("pressed")
+    public func didPressRightButton() {
+        print("Right button pressed")
+    }
+    
+    public func didPressLeftButton() {
+        print("Left button pressed")
     }
     
     //MARK: TextView Delegate
@@ -96,8 +101,6 @@ extension AwesomeViewController {
         }
     }
     
-    override public func viewDidLayoutSubviews() {
-        
-    }
+    override public func viewDidLayoutSubviews() {}
     
 }

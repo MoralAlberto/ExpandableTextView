@@ -448,8 +448,8 @@
 		4B4062209FE87BA918EA32D19D1DF12B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				48F9583A3E6A88CDFE6978F5FDF28D8C /* AwesomeToolbar.swift */,
 				F1782DF864EC37F42FC6CD8998796A22 /* AwesomeViewController.swift */,
+				48F9583A3E6A88CDFE6978F5FDF28D8C /* AwesomeToolbar.swift */,
 				C2C927891893C8569072F3CC462A6FBA /* ExpandableTextView.swift */,
 			);
 			path = Classes;

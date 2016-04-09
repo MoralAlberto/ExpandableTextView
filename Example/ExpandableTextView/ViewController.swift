@@ -14,9 +14,10 @@ class ViewController: AwesomeViewController {
         super.viewDidLoad()
         
         toolBar.textView.maxNumberOfLines = 4
+        toolBar.hasLeftButton = false
     }
     
-    override func didPressRighButton() {
+    override func didPressRightButton() {
         let alert = UIAlertController(title: "Awesome!", message:"\(toolBar.textView.text)", preferredStyle: .Alert)
         let action = UIAlertAction(title: "You're right", style: .Default) { _ in
             print("Message: \(self.toolBar.textView.text)")
@@ -24,7 +25,13 @@ class ViewController: AwesomeViewController {
         alert.addAction(action)
         self.presentViewController(alert, animated: true){}
         
-        super.didPressRighButton()
+        super.didPressRightButton()
+    }
+    
+    override func didPressLeftButton() {
+        print("Hi! left button has been pressed!")
+        
+        super.didPressLeftButton()
     }
 
     override func didReceiveMemoryWarning() {
