@@ -13,8 +13,15 @@ class ViewController: AwesomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let actionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "One") { action in
+             print("Action One")
+        }
+        
         toolBar.textView.maxNumberOfLines = 4
         toolBar.hasLeftButton = false
+        
+        self.optionsActionSheet = []
+        self.optionsActionSheet?.insert(actionSheet, atIndex: 0)
     }
     
     override func didPressRightButton() {
@@ -30,6 +37,7 @@ class ViewController: AwesomeViewController {
     
     override func didPressLeftButton() {
         print("Hi! left button has been pressed!")
+        
         
         super.didPressLeftButton()
     }

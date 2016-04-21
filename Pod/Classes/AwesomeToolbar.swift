@@ -83,8 +83,6 @@ public class AwesomeToolbar: UIToolbar {
             rightButton.bottomAnchor.constraintEqualToAnchor(bottomAnchor, constant: -8)
             ])
         
-
-        
         NSLayoutConstraint(item: textView, attribute: NSLayoutAttribute.Height, relatedBy: .GreaterThanOrEqual, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 30).active = true
     }
 

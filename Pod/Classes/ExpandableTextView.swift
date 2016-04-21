@@ -50,7 +50,7 @@ public class ExpandableTextView: UITextView {
         let textView = notification.object as? UITextView
         let numberOfLines = self.numberOfLines()
         
-        guard ((textView?.isEqual(self)) == nil) || numberOfLines <= maxNumberOfLines else {
+        guard ((textView?.isEqual(self)) == nil) || numberOfLines < maxNumberOfLines else {
             return
         }
         

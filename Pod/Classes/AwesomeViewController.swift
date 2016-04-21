@@ -13,6 +13,10 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     
     public let toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: true)
     
+    public var optionsActionSheet: [CustomActionSheetModel]?
+    
+    public var alert = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
+    
     private var heightConstraint = NSLayoutConstraint()
     
     //  Then we create a UITOOLBAR, UITEXTVIEW and UIBUTTON, we manage all this UIVIEW with NSLayoutAnchor (a factory class for creating NSLayoutConstraint objects using a fluent API), and also, in some cases we create constraints with NSLayoutConstraint.
@@ -22,7 +26,7 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         //  Extension to get notifications when the keyboard will/hide appear.
         notificationsKeyboard()
         
@@ -57,6 +61,31 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     
     public func didPressLeftButton() {
         print("Left button pressed")
+        
+        alert = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive) { (alert: UIAlertAction!) -> Void in
+            NSLog("You pressed button two")
+        }
+
+        var i = 0
+        repeat {
+            
+            // extract data
+            let title = optionsActionSheet![0].title
+            let function = optionsActionSheet![0].alertFunction
+            
+            let action = UIAlertAction(title: title, style: .Default, handler: function!)
+            alert.addAction(action)
+            
+            i = i + 1
+        } while (i < optionsActionSheet!.count)
+        
+        
+        alert.addAction(cancelAction)
+        
+        presentViewController(alert, animated: true, completion:nil) // 6
+
     }
     
     //MARK: TextView Delegate
