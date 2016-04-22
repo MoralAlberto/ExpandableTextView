@@ -13,9 +13,12 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     
     public let toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: true)
     
-    public var optionsActionSheet: [CustomActionSheetModel]?
+    public var dismissMenuActionSheet: CustomActionSheetModel?
+    public var optionsMenuActionSheet: [CustomActionSheetModel]?
     
-    public var alert = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
+    public lazy var leftMenu = UIAlertController(title: "My Alert",
+                                              message: "This is an action sheet.",
+                                              preferredStyle: .ActionSheet)
     
     private var heightConstraint = NSLayoutConstraint()
     
@@ -62,27 +65,25 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     public func didPressLeftButton() {
         print("Left button pressed")
         
-        alert = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
+        leftMenu = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Destructive) { (alert: UIAlertAction!) -> Void in
-            NSLog("You pressed button two")
-        }
-
-        
-        optionsActionSheet?.forEach { element in
+        optionsMenuActionSheet?.forEach { element in
             if let x = element as? CustomActionSheetModel {
                 let title = x.title
                 let function = x.alertFunction
                 
                 let action = UIAlertAction(title: title, style: .Default, handler: function!)
-                alert.addAction(action)
+                leftMenu.addAction(action)
             }
         }
         
         
-        alert.addAction(cancelAction)
-        
-        presentViewController(alert, animated: true, completion:nil) // 6
+        if let x = dismissMenuActionSheet {
+            let cancelAction = UIAlertAction(title: x.title, style: .Destructive, handler: x.alertFunction!)
+            leftMenu.addAction(cancelAction)
+        }
+    
+        presentViewController(leftMenu, animated: true, completion:nil)
 
     }
     

@@ -16,19 +16,30 @@ class ViewController: AwesomeViewController {
         setup()
     }
     
+    
     //MARK: Configuration
     func setup() {
-        let actionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "One") { action in
-            print("Action One")
-        }
-        
+
         toolBar.textView.maxNumberOfLines = 4
         toolBar.hasLeftButton = false
         
         //  Add options when the left button is pressed
-        self.optionsActionSheet = []
-        self.optionsActionSheet?.append(actionSheet)
+        self.optionsMenuActionSheet = []
+        
+        //  For every action, we create a function
+        let actionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "One") { action in
+            print("Action One")
+        }
+        
+        //  Custom Cancel Action, it's optional?
+        let cancelMenuActionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "Cancel") { action in
+            print("Cancel Action")
+        }
+        
+        self.optionsMenuActionSheet?.append(actionSheet)
+        self.dismissMenuActionSheet = cancelMenuActionSheet
     }
+    
     
     //MARK:  Override methods
     override func didPressRightButton() {
@@ -44,8 +55,6 @@ class ViewController: AwesomeViewController {
     
     override func didPressLeftButton() {
         print("Hi! left button has been pressed!")
-        
-        
         super.didPressLeftButton()
     }
 }

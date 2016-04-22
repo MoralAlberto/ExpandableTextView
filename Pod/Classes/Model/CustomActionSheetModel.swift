@@ -8,9 +8,7 @@
 
 import Foundation
 
-public typealias alertFunctionAction = ((UIAlertAction) -> Void)?
-
-public struct CustomActionSheetModel {
+public struct CustomActionSheetModel: ActionSheetProtocol {
     public var title: String!
     public var alertFunction: alertFunctionAction?
     
