@@ -20,6 +20,7 @@ class ViewController: AwesomeViewController {
         toolBar.textView.maxNumberOfLines = 4
         toolBar.hasLeftButton = false
         
+        //  Add options when the left button is pressed
         self.optionsActionSheet = []
         self.optionsActionSheet?.insert(actionSheet, atIndex: 0)
     }
@@ -41,11 +42,5 @@ class ViewController: AwesomeViewController {
         
         super.didPressLeftButton()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 

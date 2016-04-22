@@ -68,18 +68,16 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
             NSLog("You pressed button two")
         }
 
-        var i = 0
-        repeat {
-            
-            // extract data
-            let title = optionsActionSheet![0].title
-            let function = optionsActionSheet![0].alertFunction
-            
-            let action = UIAlertAction(title: title, style: .Default, handler: function!)
-            alert.addAction(action)
-            
-            i = i + 1
-        } while (i < optionsActionSheet!.count)
+        
+        optionsActionSheet?.forEach { element in
+            if let x = element as? CustomActionSheetModel {
+                let title = x.title
+                let function = x.alertFunction
+                
+                let action = UIAlertAction(title: title, style: .Default, handler: function!)
+                alert.addAction(action)
+            }
+        }
         
         
         alert.addAction(cancelAction)
