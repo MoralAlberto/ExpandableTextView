@@ -13,8 +13,13 @@ class ViewController: AwesomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setup()
+    }
+    
+    //MARK: Configuration
+    func setup() {
         let actionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "One") { action in
-             print("Action One")
+            print("Action One")
         }
         
         toolBar.textView.maxNumberOfLines = 4
@@ -22,9 +27,10 @@ class ViewController: AwesomeViewController {
         
         //  Add options when the left button is pressed
         self.optionsActionSheet = []
-        self.optionsActionSheet?.insert(actionSheet, atIndex: 0)
+        self.optionsActionSheet?.append(actionSheet)
     }
     
+    //MARK:  Override methods
     override func didPressRightButton() {
         let alert = UIAlertController(title: "Awesome!", message:"\(toolBar.textView.text)", preferredStyle: .Alert)
         let action = UIAlertAction(title: "You're right", style: .Default) { _ in
