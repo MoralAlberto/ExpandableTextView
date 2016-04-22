@@ -11,7 +11,8 @@ import Foundation
 
 public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
     
-    public let toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: true)
+    public var hasLeftButton = false
+    public var toolBar = AwesomeToolbar()
     
     public var dismissMenuActionSheet: CustomActionSheetModel?
     public var optionsMenuActionSheet: [CustomActionSheetModel]?
@@ -33,6 +34,7 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
         //  Extension to get notifications when the keyboard will/hide appear.
         notificationsKeyboard()
         
+        toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: hasLeftButton)
         toolBar.textView.customDelegate = self
         
         //  Create Toolbar
@@ -76,7 +78,6 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
                 leftMenu.addAction(action)
             }
         }
-        
         
         if let x = dismissMenuActionSheet {
             let cancelAction = UIAlertAction(title: x.title, style: .Destructive, handler: x.alertFunction!)

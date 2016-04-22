@@ -12,6 +12,12 @@ class ViewController: AwesomeViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hasLeftButton = true
+        toolBar.updateConstraintsIfNeeded()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
         setup()
     }
@@ -19,9 +25,8 @@ class ViewController: AwesomeViewController {
     
     //MARK: Configuration
     func setup() {
-
+        
         toolBar.textView.maxNumberOfLines = 4
-        toolBar.hasLeftButton = false
         
         //  Add options when the left button is pressed
         self.optionsMenuActionSheet = []
@@ -32,12 +37,10 @@ class ViewController: AwesomeViewController {
         }
         
         //  Custom Cancel Action, it's optional?
-        let cancelMenuActionSheet: CustomActionSheetModel = CustomActionSheetModel(title: "Cancel") { action in
+        self.optionsMenuActionSheet?.append(actionSheet)
+        self.dismissMenuActionSheet = CustomActionSheetModel(title: "Cancel") { action in
             print("Cancel Action")
         }
-        
-        self.optionsMenuActionSheet?.append(actionSheet)
-        self.dismissMenuActionSheet = cancelMenuActionSheet
     }
     
     
