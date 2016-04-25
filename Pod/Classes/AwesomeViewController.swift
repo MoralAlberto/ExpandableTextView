@@ -11,12 +11,17 @@ import Foundation
 
 public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate {
     
-    public let toolBar = AwesomeToolbar()
+    public var hasLeftButton = false
+    public var toolBar = AwesomeToolbar()
+    
+    public var dismissMenuActionSheet: CustomActionSheetModel?
+    public var optionsMenuActionSheet: [CustomActionSheetModel]?
+    
+    public lazy var leftMenu = UIAlertController(title: "My Alert",
+                                              message: "This is an action sheet.",
+                                              preferredStyle: .ActionSheet)
     
     private var heightConstraint = NSLayoutConstraint()
-    
-//    internal let container = UILayoutGuide()
-    
     
     //  Then we create a UITOOLBAR, UITEXTVIEW and UIBUTTON, we manage all this UIVIEW with NSLayoutAnchor (a factory class for creating NSLayoutConstraint objects using a fluent API), and also, in some cases we create constraints with NSLayoutConstraint.
     //  UITOOLBAR
@@ -25,17 +30,22 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         //  Extension to get notifications when the keyboard will/hide appear.
         notificationsKeyboard()
         
+        toolBar = AwesomeToolbar(frame: CGRectZero, showLeftButton: hasLeftButton)
         toolBar.textView.customDelegate = self
         
         //  Create Toolbar
         view.addSubview(toolBar)
 
         //  Add Right Button Action
-        toolBar.rightButton.addTarget(self, action: "didPressRighButton", forControlEvents: .TouchUpInside)
+        toolBar.rightButton.addTarget(self, action: "didPressRightButton", forControlEvents: .TouchUpInside)
+        
+        if toolBar.hasLeftButton {
+            toolBar.leftButton.addTarget(self, action: "didPressLeftButton", forControlEvents: .TouchUpInside)
+        }
         
         //  Move the container at different heigh of your view. Put 300 instead of 0
         heightConstraint = toolBar.bottomAnchor.constraintGreaterThanOrEqualToAnchor(view.bottomAnchor, constant: 0)
@@ -50,8 +60,32 @@ public class AwesomeViewController: UIViewController, ExpandableTextViewDelegate
 
 
     //  Hook
-    public func didPressRighButton() {
-        print("pressed")
+    public func didPressRightButton() {
+        print("Right button pressed")
+    }
+    
+    public func didPressLeftButton() {
+        print("Left button pressed")
+        
+        leftMenu = UIAlertController(title: "My Alert", message: "This is an action sheet.", preferredStyle: .ActionSheet)
+        
+        optionsMenuActionSheet?.forEach { element in
+            if let x = element as? CustomActionSheetModel {
+                let title = x.title
+                let function = x.alertFunction
+                
+                let action = UIAlertAction(title: title, style: .Default, handler: function!)
+                leftMenu.addAction(action)
+            }
+        }
+        
+        if let x = dismissMenuActionSheet {
+            let cancelAction = UIAlertAction(title: x.title, style: .Destructive, handler: x.alertFunction!)
+            leftMenu.addAction(cancelAction)
+        }
+    
+        presentViewController(leftMenu, animated: true, completion:nil)
+
     }
     
     //MARK: TextView Delegate
@@ -96,8 +130,6 @@ extension AwesomeViewController {
         }
     }
     
-    override public func viewDidLayoutSubviews() {
-        
-    }
+    override public func viewDidLayoutSubviews() {}
     
 }

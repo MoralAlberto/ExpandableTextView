@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '125074FC443407E9372C16A7'
+               BlueprintIdentifier = '8D4DE5AC3AFC7CC1445360CC'
                BlueprintName = 'ExpandableTextView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ExpandableTextView.framework'>

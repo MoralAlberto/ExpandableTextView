@@ -15,7 +15,7 @@ protocol ExpandableTextViewDelegate {
 public class ExpandableTextView: UITextView {
     
     //  Public API
-    public var maxNumberOfLines = 4
+    public var maxNumberOfLines = 0
     
     var customDelegate: ExpandableTextViewDelegate?
     var minimumHeight: CGFloat = 30.0
@@ -50,7 +50,7 @@ public class ExpandableTextView: UITextView {
         let textView = notification.object as? UITextView
         let numberOfLines = self.numberOfLines()
         
-        guard ((textView?.isEqual(self)) == nil) || numberOfLines <= maxNumberOfLines else {
+        guard ((textView?.isEqual(self)) == nil) || numberOfLines < maxNumberOfLines else {
             return
         }
         
